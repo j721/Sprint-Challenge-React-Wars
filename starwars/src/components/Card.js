@@ -9,6 +9,9 @@ const StyledCard = styled.div`
     border: 3px solid black; 
     position: relative; 
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    &:hover{
+        background-color: white;
+    }
 `;
 
 const Card = props =>{
