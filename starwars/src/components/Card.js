@@ -14,7 +14,7 @@ const StyledCard = styled.div`
 const Card = props =>{
     return(
         <StyledCard>
-             <h3>props.name</h3>
+             <h3>{props.name}</h3>
              <p>Height: {props.height}</p> 
              <p>Mass: {props.mass}</p>
              <p>Hair Color:{props.hair_color}</p>
