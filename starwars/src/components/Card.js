@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
@@ -6,11 +6,12 @@ const StyledCard = styled.div`
     border-radius: 0.2em;
     background-color: pink; 
     margin: 1%;
+    border: 3px solid black; 
     position: relative; 
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 `;
 
-const Card =props=>{
+const Card = props =>{
     return(
         <StyledCard>
              <h3>props.name</h3>

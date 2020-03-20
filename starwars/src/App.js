@@ -20,38 +20,43 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-  const [data, setData] = useState([]);
+  // const proxy = "https://cors-anywhere.herokuapp.com/";
+  // const url = "https://swapi.co/api/people";
+  // function getCharacters(){
+  //   return(proxy + url) // inside axios call this is a function that adds 2 strings
+  // }
+
+  const [StarData, setData] = useState([]);
   useEffect(() => {
-      axios.get('https://swapi.co/api/people/')
+      axios.get("https://swapi.co/api/people")
 	    .then(response  => {
-        setData(response.data.results);
-        console.log(data, 'data was returned');
+        const Stardata= response.data.results;
+        setData(StarData);
+        console.log(Stardata, 'data was returned');
       })
       .catch(error => {
         console.log(error);
       });
-  }, [data]);
+  }, [StarData]);
 
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <Wrapper>
-        {data.map(character=>{
-          return(
-            <Card>
-              key={character.name}
-              name={character.name}
-              mass={character.mass}
-              hair_color={character.hair_color}
-              skin_color ={character.skin_color} 
-              birth_year = {character.birth_year}
-              gender = {character.gender}
-            </Card>
-          );
-        })}
+     <Wrapper>
+        {StarData.map((person,index)=>{
+           return <Card 
+           key={index} name={person.name}
+           mass={person.mass}
+          hair_color={person.hair_color}
+          skin_color ={person.skin_color} 
+          birth_year = {person.birth_year}
+          gender = {person.gender}
+        />
+      })}
       </Wrapper>
-    </div>
-  );
-}
-
-export default App;
+      
+          </div>
+          );
+        }
+        
+        export default App;
