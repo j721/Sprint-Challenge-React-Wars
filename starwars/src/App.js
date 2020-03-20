@@ -4,14 +4,12 @@ import styled from 'styled-components';
 import axios from 'axios';
 import './App.css';
 
-
 const Wrapper =styled.div`
 display:flex;
 flex-direction: row;
 flex-wrap: wrap;
 justify-content: center;
 `;
-
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -26,24 +24,24 @@ const App = () => {
   //   return(proxy + url) // inside axios call this is a function that adds 2 strings
   // }
 
-  const [StarData, setData] = useState([]);
+  const [Stardata, setData] = useState([]);
   useEffect(() => {
       axios.get("https://swapi.co/api/people")
 	    .then(response  => {
         const Stardata= response.data.results;
-        setData(StarData);
+        setData(Stardata);
         console.log(Stardata, 'data was returned');
       })
       .catch(error => {
         console.log(error);
       });
-  }, [StarData]);
+  }, [Stardata]);
 
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
      <Wrapper>
-        {StarData.map((person,index)=>{
+        {Stardata.map((person,index)=>{
            return <Card 
            key={index} name={person.name}
            mass={person.mass}
